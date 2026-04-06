@@ -30,7 +30,7 @@ export class BookOverviewComponent implements OnInit {
 
   books$?: Observable<readonly BookInterface[]>;
   bookCollection$?: Observable<BookInterface[]>;
-  posts$?: Observable<readonly PostInterface[]>;
+  // posts$?: Observable<readonly PostInterface[]>;
 
   ngOnInit() : void {
     this.booksService
@@ -42,19 +42,19 @@ export class BookOverviewComponent implements OnInit {
     this.books$ = this.store.select(selectBooks);
     this.bookCollection$ = this.store.select(selectBookCollection);
 
-    this.posts$ = this.store.select(selectPosts);
-    this.posts$.subscribe(posts => {
-      console.log("Posts length:", posts.length);
-      if(posts.length  == 0) {
-            this.booksService
-          .getPosts()
-          .subscribe((posts) =>{
-            console.log("Posts list:",posts);
-            this.store.dispatch(PostsApiActions.retrievedPostList({ posts }));
-          }
-        );
-      }
-    });
+    // this.posts$ = this.store.select(selectPosts);
+    // this.posts$.subscribe(posts => {
+    //   console.log("Posts length:", posts.length);
+    //   if(posts.length  == 0) {
+    //         this.booksService
+    //       .getPosts()
+    //       .subscribe((posts) =>{
+    //         console.log("Posts list:",posts);
+    //         this.store.dispatch(PostsApiActions.retrievedPostList({ posts }));
+    //       }
+    //     );
+    //   }
+    // });
   }
 
   onAdd(bookId: string) {
