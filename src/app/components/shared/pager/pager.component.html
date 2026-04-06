@@ -1,0 +1,7 @@
+<div class="col-auto float-start">
+  <select class="form-select mt-1" [value]="this.itemsPerPage" (change)="this.changePageSize($any($event).target.value)">
+    @for (item of this.options(); track $index) {
+      <option [value]="item" [selected]="item == this.itemsPerPage">{{ item }}</option>
+    }
+  </select>
+</div>

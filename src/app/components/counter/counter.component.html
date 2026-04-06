@@ -1,0 +1,26 @@
+<app-back-to-home></app-back-to-home>
+<div class="container ps-2 float-start">
+    <div class="row">
+        <div class="col-auto float-start">
+            <button (click)="increment()" mat-raised-button color="primary">
+                <mat-icon class="material-symbols-outlined">add</mat-icon>
+                <span>increment</span>
+            </button>
+        </div>
+        <div class="col-auto float-start">
+            <button (click)="decrement()" mat-raised-button color="primary">
+                <mat-icon class="material-symbols-outlined">remove</mat-icon>
+                <span>Decrement</span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button (click)="reset()" mat-raised-button color="warn">
+                <mat-icon class="material-symbols-outlined">restart_alt</mat-icon>
+                <span>Reset Counter</span>        
+            </button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div>Current Count: {{ count$ | async }}</div>
+    </div>
+</div>

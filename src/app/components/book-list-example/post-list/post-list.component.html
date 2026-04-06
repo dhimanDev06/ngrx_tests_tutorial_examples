@@ -1,0 +1,7 @@
+<h2>Post list </h2>
+
+@for(post of (posts$ | async)!; track $index) {
+    <div class="book-item ps-1">
+        <p>{{post.title}} ({{post.id}})</p> 
+  </div>
+}

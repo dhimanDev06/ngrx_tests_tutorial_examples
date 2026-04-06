@@ -1,0 +1,42 @@
+<app-back-to-home></app-back-to-home>
+<div class="row w-100 ps-2 me-1">
+    <div class="col-auto">
+        <app-pager [page]="'users'"></app-pager>
+    </div>
+    <div class="col-auto">
+        <app-pagination [page]="'users'"></app-pagination>
+    </div>
+</div>
+@if(usersData$ | async; as users) {
+    @if(users.length > 0) {      
+        <div class="ps-2"> 
+            @if(firstItem() > -1 && lastItem() > -1 && totalItems() > -1) {
+                <div class="row mt-4">
+                    <div class="col-auto">
+                        Showing {{firstItem() + 1}} - {{lastItem()}} of total {{totalItems()}}
+                    </div>
+                </div>     
+            }
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(user of users; track user.id) {
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.age }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>  
+        </div>
+    } @else {
+        No users to show.
+    }
+}

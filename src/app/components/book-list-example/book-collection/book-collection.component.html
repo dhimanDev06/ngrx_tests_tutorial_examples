@@ -1,0 +1,9 @@
+@for(book of books(); track $index) {
+    <div class="book-item ps-1">
+        <p>{{book.volumeInfo.title}}</p><span> by {{book.volumeInfo.authors}}</span>
+        <button (click)="remove.emit(book.id)" data-test="remove-button" mat-raised-button color="warn" class="ms-2">
+            <mat-icon class="material-symbols-outlined">remove</mat-icon>
+            <span>Remove from Collection</span>            
+        </button>
+    </div>
+}

@@ -1,0 +1,61 @@
+<app-back-to-home></app-back-to-home>
+
+<div class="container float-start ps-2">
+
+    <form [formGroup]="this.numbersForm" (ngSubmit)="submitForm()">
+        <h3>Even and Odd Numbers Example</h3>
+        <div class="row">
+            <div class="col-7">
+                <mat-form-field>
+                    <mat-label for="minimum">Minimum number (higher than 0):</mat-label>
+                    <input matInput type="number" name="minimum" min="0" max="24" formControlName="minimum" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <mat-form-field>
+                    <mat-label for="maximum">Maximum number (lower than 25):</mat-label>
+                    <input matInput type="number" name="maximum" min="1" max="25" formControlName="maximum" />
+                </mat-form-field>  
+            </div>      
+        </div>
+        <div class="row">
+            <mat-checkbox type="checkbox" name="isEven" formControlName="isEven">Show even numbers</mat-checkbox>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <button type="submit" mat-raised-button color="primary">
+                    <mat-icon class="material-symbols-outlined">arrow_right_alt</mat-icon>
+                    <span>Submit</span>
+                </button>
+            </div>
+        </div>    
+    </form>
+
+    <div class="row mt-4">
+        <div class="numbers">
+            @if(data$ | async; as data) {
+                @if(data.numbers.length > 0) {
+                    {{ data.isEven ? 'Even numbers:' : 'Odd Numbers' }}<br/>
+                }            
+                @for(number of data.numbers; track $index) {
+                    {{ number }}<br/>
+                }
+            } @else {
+                No numbers to show.
+            }
+        </div>
+    </div>
+
+    @if(this.showErrors().length > 0) {
+        <div class="row">
+            <div class="errors">
+                @for(error of this.showErrors(); track error) {
+                    {{ error }}<br/>
+                }
+            </div>
+        </div>
+    }
+
+</div>

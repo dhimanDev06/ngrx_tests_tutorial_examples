@@ -1,0 +1,46 @@
+<app-back-to-home></app-back-to-home>
+<div class="container float-start ps-2">
+    <h1>Users</h1>
+    @if(this.showButton()) {
+        <div class="row">
+            <div class="col-6">
+                <button type="button" mat-raised-button color="primary" (click)="showUsers()">
+                    Show users (3500 ms delay)
+                </button>
+            </div>
+        </div>
+    }
+
+    @if(data$ | async; as users) {
+        @if(users.isLoading) {
+            <div>Loading...</div>
+        }
+
+        @if(users.error) {
+            <div>{{ users.error }}</div>
+        }
+
+        @if(users.data.length > 0) {        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(user of users.data; track user) {
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.age }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    } @else {
+        Nothing to show.
+    }
+</div>

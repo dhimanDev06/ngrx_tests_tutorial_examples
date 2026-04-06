@@ -1,0 +1,44 @@
+.pagination {
+    position: relative;
+    float: left;
+    clear: both;
+}
+
+a.page-link:hover {
+    cursor: pointer;
+}
+
+li.page-item a {
+    background-color: #fff;
+    color: #000;
+}
+
+li.page-item a:hover {
+    background-color: lightblue;
+    color: #fff;
+}
+
+li.page-item-active a {
+    background-color: lightblue;
+    color: #fff;
+}
+
+li.page-item-active a:hover {
+    background-color: lightgrey;
+    color: #fff;
+}
+
+li {
+    list-style: none;    
+    position: relative;
+    float: left;  
+    width: 49px;
+    height: 44px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+li a {
+    width: 49px;
+    height: 44px;
+}

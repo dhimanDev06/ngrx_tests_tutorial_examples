@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row mb-2">
+        <app-back-to-home></app-back-to-home>
+    </div>
+    <form [formGroup]="this.animalForm">
+        <div class="row mb-1 ps-1">
+            <div class="col-6">
+                <mat-form-field>
+                    <input type="text" matInput formControlName="animalName" placeholder="Animal name">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+    <div class="row ps-1">
+        @if(this.data$ | async; as animals) {
+            @if(animals.data.length > 0) {
+                @for(animal of animals.data; track $index) {
+                    <div class="col-auto">
+                        {{ animal }}
+                    </div>
+                }
+            } @else {
+                <div class="col-auto">
+                    No matching animals found.
+                </div>
+            }
+        } @else {
+            <div class="col-auto">
+                No animals to show.
+            </div>
+        }
+    </div>
+</div>
